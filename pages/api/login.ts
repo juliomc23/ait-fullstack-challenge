@@ -3,7 +3,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
   ok: boolean;
+
+  email?: string;
   user?: string;
+
   msg?: string;
 };
 
@@ -13,6 +16,8 @@ const login = (
   email: string,
   password: string
 ) => {
+  const user = email.split("@")[0];
+
   if (req.method === "POST") {
     if (email === "" || password === "") {
       res
@@ -21,7 +26,7 @@ const login = (
     }
 
     if (email === "admin@admin.es" && password === "admin_123456") {
-      res.status(200).json({ ok: true, user: email });
+      res.status(200).json({ ok: true, email: email, user: user });
     }
 
     if (email !== "admin@admin.es" || password !== "admin_123456") {

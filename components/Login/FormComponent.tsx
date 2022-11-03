@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import toaster, { Toaster } from "react-hot-toast";
+import { useCookies } from "react-cookie";
+
 import { useRouter } from "next/router";
 
 import { User } from "../../interfaces/User";
@@ -15,6 +17,8 @@ const FormComponent = () => {
 
   const router = useRouter();
 
+  const [cookies, setCookie] = useCookies(["username"]);
+
   const login = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const response = await loginUser(user);
@@ -24,6 +28,7 @@ const FormComponent = () => {
     }
 
     if (response.ok) {
+      setCookie("username", response.user, { path: "/" });
       router.push("/");
     }
   };
