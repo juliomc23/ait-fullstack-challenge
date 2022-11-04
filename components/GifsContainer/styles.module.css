@@ -1,0 +1,11 @@
+.gifContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.gifRecomended {
+  width: 100%;
+  overflow-x: scroll;
+  display: flex;
+}

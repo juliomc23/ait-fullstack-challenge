@@ -1,0 +1,23 @@
+.gifCard {
+  width: 20rem;
+  height: 20rem;
+  margin-bottom: 1rem;
+}
+
+.gifIMG {
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.gifRecomendedIMG {
+  border-radius: 1rem;
+  height: 100%;
+}
+
+.gifRecomendedCard {
+  height: 20rem;
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}

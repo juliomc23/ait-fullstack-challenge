@@ -1,0 +1,36 @@
+.singleGifSection {
+  margin-top: 2rem;
+}
+
+.goHome {
+  display: block;
+  width: 8rem;
+  margin-left: 1rem;
+  font-size: 2rem;
+  padding: 0.3rem;
+  background-color: #b9192c;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  text-align: center;
+
+  color: #ffffff;
+  text-shadow: 3px 5px 2px #474747;
+  transition: all 300ms;
+}
+
+.goHome:hover {
+  transform: scale(1.05);
+}
+
+.singleGifContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.separator {
+  width: 99%;
+  border: 1px solid #ccc;
+}

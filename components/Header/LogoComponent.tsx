@@ -1,11 +1,13 @@
 import React from "react";
 
-type Props = {};
+type Props = {
+  width: number;
+};
 
-const LogoComponent = (props: Props) => {
+const LogoComponent = ({ width }: Props) => {
   return (
     <picture>
-      <img src="/images/Giphy-logo.png" width={750} />
+      <img src="/images/Giphy-logo.png" width={width} />
     </picture>
   );
 };
