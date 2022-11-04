@@ -22,3 +22,17 @@
 .link {
   color: black;
 }
+
+.searchBarDiv {
+  width: 15rem;
+  border-radius: 2rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  outline: none;
+  transition: all 500ms;
+  font-size: 1.2rem;
+}
+
+.searchBarDiv:hover {
+  background-color: #ccc;
+}

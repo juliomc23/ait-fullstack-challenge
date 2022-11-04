@@ -7,6 +7,8 @@ import LogoComponent from "../components/Header/LogoComponent";
 import HeaderNavbarComponent from "../components/Header/HeaderNavbarComponent";
 import { ServerResponse, Gif } from "../interfaces/Gif";
 import GifsContainerComponent from "../components/GifsContainer/GifsContainerComponent";
+import SearchBarComponent from "../components/Header/SearchBarComponent";
+import { useEffect, useState } from "react";
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(
@@ -20,6 +22,28 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Home({ data }: ServerResponse) {
+  const [searchGif, setSearchGif] = useState<string>();
+  const [gifsFinded, setGifsFinded] = useState<any>();
+
+  const search = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const response = await fetch(
+      `https://api.giphy.com/v1/gifs/search?api_key=DrwzSwYL7xrAfh3lMtMh4HRPhoVuEC16&q=${searchGif}&limit=25&offset=0&rating=g&lang=en`
+    );
+
+    const data = await response.json();
+
+    setGifsFinded(data);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchGif(e.target.value);
+    setInterval(() => {
+      e.target.value = "";
+    }, 5000);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -29,12 +53,13 @@ export default function Home({ data }: ServerResponse) {
       </Head>
 
       <header className={styles.homeHeader}>
-        <LogoComponent width={200} />
+        <LogoComponent width={200} setGifsFinded={setGifsFinded} />
+        <SearchBarComponent search={search} handleChange={handleChange} />
         <HeaderNavbarComponent />
       </header>
 
       <main className={styles.homeBody}>
-        <GifsContainerComponent data={data} />
+        <GifsContainerComponent data={data} gifsFinded={gifsFinded} />
       </main>
 
       <footer className={styles.homeFooter}>

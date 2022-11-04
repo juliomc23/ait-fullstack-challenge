@@ -9,3 +9,9 @@
   overflow-x: scroll;
   display: flex;
 }
+
+.gifFinded {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
